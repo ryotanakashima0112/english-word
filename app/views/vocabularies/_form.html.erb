@@ -1,0 +1,27 @@
+<%= form_with(model: vocabulary, local: true) do |form| %>
+  <% if vocabulary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vocabulary.errors.count, "error") %> prohibited this vocabulary from being saved:</h2>
+
+      <ul>
+      <% vocabulary.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "英単語" %>
+    <%= form.text_field :word %>
+  </div>
+
+  <div class="field">
+    <%= form.label "意味" %>
+    <%= form.text_field :meaning %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "新しい単語を登録する" %>
+  </div>
+<% end %>
