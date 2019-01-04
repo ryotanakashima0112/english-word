@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Vocabularies</h1>
+<h1>英単語一覧ページ</h1>
 
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Word</th>
       <th>Meaning</th>
       <th>Count</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @vocabularies.each do |vocabulary| %>
       <tr>
+        <td><%= vocabulary.id %></td>
         <td><%= vocabulary.word %></td>
         <td><%= vocabulary.meaning %></td>
         <td><%= vocabulary.count %></td>
@@ -25,7 +27,9 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @vocabularies %>
 
 <br>
 
 <%= link_to '新しい単語を登録する', new_vocabulary_path %>
+<%= link_to '英単語のテストを始める', test_path %>

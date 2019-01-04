@@ -4,7 +4,7 @@ class VocabulariesController < ApplicationController
   # GET /vocabularies
   # GET /vocabularies.json
   def index
-    @vocabularies = Vocabulary.all
+    @vocabularies = Vocabulary.page(params[:page]).per(10)
   end
 
   # GET /vocabularies/1
