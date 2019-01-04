@@ -61,6 +61,11 @@ class VocabulariesController < ApplicationController
     end
   end
 
+  def test
+    @word = Vocabulary.where( 'id >= ?', rand(Vocabulary.count) + 1 ).first.word
+    render :test
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vocabulary
