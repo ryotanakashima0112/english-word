@@ -1,0 +1,12 @@
+<h1>英語→日本語モード</h1>
+
+<%= link_to "ランダムに英単語を表示させる", english_path %>
+
+
+<div>
+  <% if @word %>
+    <%= @word%>
+  <% end %>
+</div>
+
+<%= link_to "英単語一覧ページに戻る", vocabularies_path %>

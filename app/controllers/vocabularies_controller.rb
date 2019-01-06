@@ -7,15 +7,12 @@ class VocabulariesController < ApplicationController
     @vocabularies = Vocabulary.page(params[:page]).per(10)
     @search = Vocabulary.ransack(params[:q])
     @result = @search.result
-    @result_word = @result.pluck(:meaning)[0]
+    @result_meaning = @result.pluck(:meaning)[0]
+    @result_vocabulary = Vocabulary.find(@result.pluck(:id)[0])
+    @result_word = @result.pluck(:word)[0]
   end
 
-  # GET /vocabularies/1
-  # GET /vocabularies/1.json
-  def show
-  end
 
-  # GET /vocabularies/new
   def new
     @vocabulary = Vocabulary.new
   end
@@ -64,9 +61,14 @@ class VocabulariesController < ApplicationController
     end
   end
 
-  def test
+  def english_to_japanies_mode
     @word = Vocabulary.where( 'id >= ?', rand(Vocabulary.count) + 1 ).first.word
-    render :test
+    render :english_to_japanies_mode
+  end
+
+  def japanies_to_english_mode
+    @meaning = Vocabulary.where( 'id >= ?', rand(Vocabulary.count) + 1 ).first.meaning
+    render :japanies_to_english_mode
   end
 
   private

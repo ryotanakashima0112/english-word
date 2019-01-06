@@ -4,14 +4,23 @@
 
 <%= search_form_for @search  do |f| %>
   <div class="form-group">
-    <%= f.label :word_cont, "Word" %>
+    <%= f.label :word_cont, "英単語入力欄" %>
     <%= f.text_field :word_cont, class: "form-control" %>
   </div>
   <div class="actions"><%= f.submit "検索する" %></div>
 <% end %>
 
+<%= search_form_for @search  do |f| %>
+  <div class="form-group">
+    <%= f.label :meaning_cont, "日本語訳入力欄" %>
+    <%= f.text_field :meaning_cont, class: "form-control" %>
+  </div>
+  <div class="actions"><%= f.submit "検索する" %></div>
+<% end %>
+
 <% if @result.any? %>
-  検索結果のmeaning: <%= @result_word %>
+  検索結果(id & word & meaning): <%= @result_word %> <%= @result_meaning %><br>
+  その単語を編集する場合はこちら → <%= link_to 'Edit', edit_vocabulary_path(@result_vocabulary) %>
 <% end %>
 
 <table>
@@ -20,7 +29,6 @@
       <th>Id</th>
       <th>Word</th>
       <th>Meaning</th>
-      <th>Count</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -31,7 +39,6 @@
         <td><%= vocabulary.id %></td>
         <td><%= vocabulary.word %></td>
         <td><%= vocabulary.meaning %></td>
-        <td><%= vocabulary.count %></td>
         <td><%= link_to 'Show', vocabulary %></td>
         <td><%= link_to 'Edit', edit_vocabulary_path(vocabulary) %></td>
         <td><%= link_to 'Destroy', vocabulary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -44,4 +51,5 @@
 <br>
 
 <%= link_to '新しい単語を登録する', new_vocabulary_path %>
-<%= link_to '英単語のテストを始める', test_path %>
+<%= link_to '英語→日本語モード', english_path %>
+<%= link_to '日本語→英語モード', japanies_path %>

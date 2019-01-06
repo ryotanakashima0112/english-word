@@ -1,0 +1,12 @@
+<h1>日本語→英語モード</h1>
+
+<%= link_to "ランダムに日本語訳を表示させる", japanies_path %>
+
+
+<div>
+  <% if @meaning %>
+    <%= @meaning %>
+  <% end %>
+</div>
+
+<%= link_to "英単語一覧ページに戻る", vocabularies_path %>
