@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'vocabularies#index'
+  root to: 'homes#top'
   resources :vocabularies
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "english", to: "vocabularies#english_to_japanies_mode"
