@@ -71,6 +71,21 @@ class VocabulariesController < ApplicationController
     render :japanies_to_english_mode
   end
 
+  def mistake
+    binding.pry
+    @vocabulary = Vocabulary.find_by(word: params[:vocabulary][:word])
+    if @vocabulary.count == nil
+      @vocabulary.count = 0
+      @vocabulary.count += 1
+    else
+      @vocabulary.count += 1
+    end
+
+    @vocabulary.save
+    @word = Vocabulary.where( 'id >= ?', rand(Vocabulary.count) + 1 ).first.word
+    render :english_to_japanies_mode
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vocabulary

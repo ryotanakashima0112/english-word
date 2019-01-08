@@ -6,7 +6,7 @@
 <div>
   <% if @word %>
     <%= @word %>
-
+    <%= link_to "わからないボタン", mistake_path(@vocabulary, params: { vocabulary: { word: @word} }), method: :post %>
   <% end %>
 </div>
 
