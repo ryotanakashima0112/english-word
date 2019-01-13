@@ -1,0 +1,27 @@
+<% if vocabularies %>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>英単語</th>
+    <th>意味</th>
+    <th>詳細ページ</th>
+    <th>編集ページ</th>
+    <th>削除ページ</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% vocabularies.each do |vocabulary| %>
+    <tr>
+      <td><%= vocabulary.id %></td>
+      <td><%= vocabulary.word %></td>
+      <td><%= vocabulary.meaning %></td>
+      <td><%= link_to 'Show', vocabulary %></td>
+      <td><%= link_to 'Edit', edit_vocabulary_path(vocabulary) %></td>
+      <td><%= link_to 'Destroy', vocabulary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="search" style="margin-bottom: 30px;">
+  <div class="row">
+    <div class="text-center", style="padding-top: 15px">
+      <%= form_tag(search_english_path, method: :get,  class: 'form-inline') do %>
+        <div class="form-group">
+          <%= text_field_tag :search, params[:search] %>
+        </div>
+        <div style="padding-left: 10px">
+          <%= submit_tag '英単語を検索する', :word => nil, class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'search', vocabularies: @vocabularies %>

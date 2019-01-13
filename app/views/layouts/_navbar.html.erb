@@ -14,13 +14,19 @@
             <%= link_to '一覧ページ', vocabularies_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-          <%= link_to '英単語の登録', new_vocabulary_path, class: "nav-link" %>
+            <%= link_to '英単語の登録', new_vocabulary_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-          <%= link_to '英単語→日本語モード', english_path, class: "nav-link" %>
+            <%= link_to '英単語→日本語モード', english_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-          <%= link_to '日本語→英単語モード', japanies_path, class: "nav-link" %>
+            <%= link_to '日本語→英単語モード', japanies_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '英単語検索モード', search_english_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '意味検索モード', search_japanies_path, class: "nav-link" %>
           </li>
         </ul>
       </div>
