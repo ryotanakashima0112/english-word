@@ -5,12 +5,6 @@ class VocabulariesController < ApplicationController
   # GET /vocabularies.json
   def index
     @vocabularies = Vocabulary.page(params[:page]).per(10)
-    @search = Vocabulary.ransack(params[:q])
-    @result = @search.result
-    @result_meaning = @result.pluck(:meaning)[0]
-    @result_vocabulary = Vocabulary.find(@result.pluck(:id)[0])
-    @result_word = @result.pluck(:word)[0]
-
   end
 
 

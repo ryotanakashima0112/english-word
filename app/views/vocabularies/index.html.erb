@@ -28,26 +28,3 @@
   </tbody>
 </table>
 <%= paginate @vocabularies %>
-
-<%= search_form_for @search  do |f| %>
-  <div class="form-group">
-    <%= f.label :word_cont, "英単語入力欄" %>
-    <%= f.text_field :word_cont, class: "form-control" %>
-  </div>
-  <div class="actions"><%= f.submit "検索する" %></div>
-<% end %>
-
-<%= search_form_for @search  do |f| %>
-  <div class="form-group">
-    <%= f.label :meaning_cont, "日本語訳入力欄" %>
-    <%= f.text_field :meaning_cont, class: "form-control" %>
-  </div>
-  <div class="actions"><%= f.submit "検索する" %></div>
-<% end %>
-
-<% if @result.any? %>
-  検索結果(id & word & meaning): <%= @result_word %> <%= @result_meaning %><br>
-  その単語を編集する場合はこちら → <%= link_to 'Edit', edit_vocabulary_path(@result_vocabulary) %>
-<% end %>
-
-<br>
