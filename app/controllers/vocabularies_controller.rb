@@ -63,7 +63,8 @@ class VocabulariesController < ApplicationController
   end
 
   def english_to_japanies_mode
-    @word = Vocabulary.where( 'id >= ?', rand(Vocabulary.count) + 1 ).first.word
+    @vocabulary = Vocabulary.where( 'id >= ?', rand(Vocabulary.count) + 1 ).first
+    @word = @vocabulary.word
     render :english_to_japanies_mode
   end
 
@@ -72,9 +73,9 @@ class VocabulariesController < ApplicationController
     render :japanies_to_english_mode
   end
 
-  def mistake
-    binding.pry
+  def mistake_english
     @vocabulary = Vocabulary.find_by(word: params[:vocabulary][:word])
+
     if @vocabulary.count == nil
       @vocabulary.count = 0
       @vocabulary.count += 1
@@ -82,9 +83,29 @@ class VocabulariesController < ApplicationController
       @vocabulary.count += 1
     end
 
+    flash.now[:danger] = "#{@vocabulary.word}の間違えた回数が#{@vocabulary.count}回になりました！"
+
     @vocabulary.save
+
     @word = Vocabulary.where( 'id >= ?', rand(Vocabulary.count) + 1 ).first.word
     render :english_to_japanies_mode
+  end
+
+  def mistake_japanies
+    @vocabulary = Vocabulary.find_by(meaning: params[:vocabulary][:meaning])
+    if @vocabulary.count == nil
+      @vocabulary.count = 0
+      @vocabulary.count += 1
+    else
+      @vocabulary.count += 1
+    end
+
+    flash.now[:danger] = "#{@vocabulary.word}の間違えた回数が#{@vocabulary.count}回になりました！"
+
+    @vocabulary.save
+
+    @meaning = Vocabulary.where( 'id >= ?', rand(Vocabulary.count) + 1 ).first.meaning
+    render :japanies_to_english_mode
   end
 
   private

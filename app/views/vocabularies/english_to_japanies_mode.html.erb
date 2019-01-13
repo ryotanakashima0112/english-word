@@ -1,0 +1,16 @@
+<div style="margin-top: 15px;">
+  <h1>英語→日本語モード</h1>
+</div>
+
+<%= link_to "ランダムに英単語を表示させる", english_path, class: "btn btn-success" %>
+
+<div style="margin-top: 15px;">
+  <% if @word %>
+    <div style="font-size: 30px;">
+      英単語: <%= @word %>
+    </div>
+    <div style="padding-top: 10px;">
+      <%= link_to "わからないボタン", mistake_english_path(@vocabulary, params: { vocabulary: { word: @word} }), class: "btn btn-danger", method: :post %>
+    </div>
+  <% end %>
+</div>
