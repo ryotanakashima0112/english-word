@@ -4,7 +4,6 @@ class VocabulariesController < ApplicationController
   # GET /vocabularies
   # GET /vocabularies.json
   def index
-    @vocabulary = Vocabulary.new
     @vocabularies = Vocabulary.page(params[:page]).per(10)
     @search = Vocabulary.ransack(params[:q])
     @result = @search.result
@@ -16,6 +15,7 @@ class VocabulariesController < ApplicationController
 
 
   def new
+    @vocabulary = Vocabulary.new
   end
 
   # GET /vocabularies/1/edit
@@ -32,7 +32,7 @@ class VocabulariesController < ApplicationController
         format.html { redirect_to @vocabulary, notice: 'Vocabulary was successfully created.' }
         format.json { render :show, status: :created, location: @vocabulary }
       else
-        format.html { render :index }
+        format.html { render :new }
         format.json { render json: @vocabulary.errors, status: :unprocessable_entity }
       end
     end
