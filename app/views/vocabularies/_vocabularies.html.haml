@@ -1,0 +1,20 @@
+.row
+  %table.table.table-bordered.table-dark
+    %thead
+      %tr
+        %th{:scope => "col"} #
+        %th{:scope => "col"} 英単語
+        %th{:scope => "col"} 意味
+        %th{:scope => "col"} 詳細ページへのリンク
+        %th{:scope => "col"} 編集ページへのリンク
+        %th{:scope => "col"} 削除ページへのリンク
+    %tbody
+      - vocabularies.each do |vocabulary|
+        %tr
+          %th{:scope => "row"}= vocabulary.id
+          %td= vocabulary.word
+          %td= vocabulary.meaning
+          %td= link_to 'Show', vocabulary
+          %td= link_to 'Edit', edit_vocabulary_path(vocabulary)
+          %td= link_to 'Destroy', vocabulary, method: :delete, data: { confirm: 'Are you sure?' }
+  = paginate @vocabularies

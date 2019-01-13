@@ -1,0 +1,7 @@
+%h1 英語→日本語モード
+= link_to "ランダムに英単語を表示させる", english_path
+%div
+  - if @word
+    = @word
+    = link_to "わからないボタン", mistake_path(@vocabulary, params: { vocabulary: { word: @word} }), method: :post
+= link_to "英単語一覧ページに戻る", vocabularies_path

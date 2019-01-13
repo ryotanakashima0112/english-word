@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Word:
+  = @vocabulary.word
+%p
+  %strong Meaning:
+  = @vocabulary.meaning
+%p
+  %strong Count:
+  = @vocabulary.count
+= link_to 'Edit', edit_vocabulary_path(@vocabulary)
+|
+= link_to 'Back', vocabularies_path
