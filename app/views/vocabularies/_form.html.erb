@@ -1,4 +1,4 @@
-
+<form>
 <%= form_with(model: vocabulary, local: true) do |form| %>
   <% if vocabulary.errors.any? %>
     <div id="error_explanation">
@@ -12,17 +12,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group col-sm-6">
     <%= form.label "英単語" %>
-    <%= form.text_field :word %>
+    <%= form.text_field :word, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-sm-6">
     <%= form.label "意味" %>
-    <%= form.text_field :meaning %>
+    <%= form.text_field :meaning, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "新しい単語を登録する" %>
+  <div class="actions col-sm-6">
+    <%= form.submit "新しい単語を登録する", class: "btn btn-primary" %>
   </div>
 <% end %>
+</form>
