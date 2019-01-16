@@ -12,7 +12,7 @@
     <tr>
       <td><%= idx + 1 %></td>
       <td><%= word %></td>
-      <td><%= link_to "わからないボタン", mistake_english_path(@vocabulary, params: { vocabulary: { word: @word} }), class: "btn btn-danger", method: :post %></td>
+      <td><%= link_to "わからないボタン", mistake_english_path(@vocabulary, params: { vocabulary: { word: word} }), class: "btn btn-danger", method: :post %></td>
     </tr>
   <% end %>
   </tbody>
