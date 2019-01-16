@@ -115,6 +115,14 @@ class VocabulariesController < ApplicationController
     render :english_word_test
   end
 
+  def japanies_meaning_test
+    @meanings = []
+    10.times do
+      @meanings << Vocabulary.where( 'id >= ?', rand(Vocabulary.count) + 1 ).first.meaning
+    end
+    render :japanies_meaning_test
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vocabulary

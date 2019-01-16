@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get "search_english", to: "searches#search_english"
   get "search_japanies", to: "searches#search_japanies"
   get "english_word_test", to: "vocabularies#english_word_test"
+  get "japanies_meaning_test", to: "vocabularies#japanies_meaning_test"
 end

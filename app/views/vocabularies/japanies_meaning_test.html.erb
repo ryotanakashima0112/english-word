@@ -1,0 +1,21 @@
+<table class="table table-bordered" style="margin-top: 15px;">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>意味</th>
+    <th>ボタン</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @meanings.each_with_index do |meaning, idx| %>
+    <tr>
+      <td><%= idx + 1 %></td>
+      <td><%= meaning %></td>
+      <td><%= link_to "わからないボタン", mistake_japanies_path(@vocabulary, params: { vocabulary: { meaning: meaning} }), class: "btn btn-danger", method: :post %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to "もう一度10問単語テストをする", japanies_meaning_test_path, class: "btn btn-success" %>
