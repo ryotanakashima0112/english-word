@@ -16,17 +16,23 @@
           <li class="nav-item">
             <%= link_to '英単語の登録', new_vocabulary_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to '英単語→日本語モード', english_path, class: "nav-link" %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              テストモード
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to '英単語→日本語', english_path, class: "dropdown-item" %>
+              <%= link_to '日本語→英単語', japanies_path, class: "dropdown-item" %>
+            </div>
           </li>
-          <li class="nav-item">
-            <%= link_to '日本語→英単語モード', japanies_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to '英単語検索モード', search_english_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to '意味検索モード', search_japanies_path, class: "nav-link" %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              検索モード
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to '英単語検索モード', search_english_path, class: "dropdown-item" %>
+              <%= link_to '意味検索モード', search_japanies_path, class: "dropdown-item" %>
+            </div>
           </li>
         </ul>
       </div>
