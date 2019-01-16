@@ -1,0 +1,21 @@
+<table class="table table-bordered" style="margin-top: 15px;">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>英単語</th>
+    <th>ボタン</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @words.each_with_index do |word, idx| %>
+    <tr>
+      <td><%= idx + 1 %></td>
+      <td><%= word %></td>
+      <td><%= link_to "わからないボタン", mistake_english_path(@vocabulary, params: { vocabulary: { word: @word} }), class: "btn btn-danger", method: :post %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to "もう一度10問単語テストをする", english_word_test_path, class: "btn btn-success" %>

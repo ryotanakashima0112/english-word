@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get "japanies", to: "vocabularies#japanies_to_english_mode"
   get "search_english", to: "searches#search_english"
   get "search_japanies", to: "searches#search_japanies"
+  get "english_word_test", to: "vocabularies#english_word_test"
 end
