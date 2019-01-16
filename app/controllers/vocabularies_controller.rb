@@ -23,9 +23,11 @@ class VocabulariesController < ApplicationController
 
     respond_to do |format|
       if @vocabulary.save
-        format.html { redirect_to @vocabulary, notice: 'Vocabulary was successfully created.' }
+        flash[:success] = '新しい単語を登録しました。'
+        format.html { redirect_to @vocabulary}
         format.json { render :show, status: :created, location: @vocabulary }
       else
+        flash.now[:danger] = '単語の登録に失敗しました。'
         format.html { render :new }
         format.json { render json: @vocabulary.errors, status: :unprocessable_entity }
       end
@@ -37,9 +39,11 @@ class VocabulariesController < ApplicationController
   def update
     respond_to do |format|
       if @vocabulary.update(vocabulary_params)
-        format.html { redirect_to @vocabulary, notice: 'Vocabulary was successfully updated.' }
+        flash[:success] = '単語の編集に成功しました。'
+        format.html { redirect_to @vocabulary}
         format.json { render :show, status: :ok, location: @vocabulary }
       else
+        flash.now[:danger] = '単語の編集に失敗しました。'
         format.html { render :edit }
         format.json { render json: @vocabulary.errors, status: :unprocessable_entity }
       end
@@ -50,8 +54,9 @@ class VocabulariesController < ApplicationController
   # DELETE /vocabularies/1.json
   def destroy
     @vocabulary.destroy
+    flash[:success] = '単語を削除しました。'
     respond_to do |format|
-      format.html { redirect_to vocabularies_url, notice: 'Vocabulary was successfully destroyed.' }
+      format.html { redirect_to vocabularies_url }
       format.json { head :no_content }
     end
   end
